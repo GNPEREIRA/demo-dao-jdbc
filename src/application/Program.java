@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 
 import entities.Department;
 import entities.Seller;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 
 public class Program {
 
@@ -16,9 +18,11 @@ public class Program {
 		
 		System.out.println(obj);
 		
-		Seller obj1 = new Seller(1,"Gustavo", "gustavo@gmail.com", sdf.parse("24/03/1983"), 2000.0, obj);
+		//Seller obj1 = new Seller(1,"Gustavo", "gustavo@gmail.com", sdf.parse("24/03/1983"), 2000.0, obj);
 		
-		System.out.println(obj1);
+		SellerDao sellerDao = DaoFactory.createSellerDao();
+		
+		System.out.println(sellerDao.toString());
 
 	}
 
