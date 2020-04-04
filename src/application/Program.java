@@ -3,6 +3,7 @@ package application;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import entities.Department;
 import entities.Seller;
@@ -13,7 +14,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Scanner sc = new Scanner(System.in);
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
@@ -47,6 +48,12 @@ public class Program {
 		sellerDao.update(seller);
 		System.out.println("Update com sucesso.");
 		
+		System.out.println("**** Teste 6 - Delete Seller ****");
+		System.out.print("Digite o Id: ");
+		int id = sc.nextInt();
+		sellerDao.deleteById(id);
+		System.out.println("Deleção completa");
+		sc.close();
 	}
 
 }
