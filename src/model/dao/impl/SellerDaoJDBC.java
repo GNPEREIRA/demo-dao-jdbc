@@ -19,8 +19,10 @@ import model.dao.SellerDao;
 
 public class SellerDaoJDBC implements SellerDao{
 	
+	//atributo do tipo Connection
 	private Connection conn;
 	
+	//Construtor exigido pela classe DaoFactory
 	public SellerDaoJDBC (Connection conn) {
 		this.conn = conn;
 	}
@@ -48,6 +50,7 @@ public class SellerDaoJDBC implements SellerDao{
 				if(rs.next()) {
 					int id = rs.getInt(1);
 					obj.setId(id);
+					
 				}
 			}else {
 				throw new DbException("Erro ao incluir");
@@ -115,8 +118,8 @@ public class SellerDaoJDBC implements SellerDao{
 		
 		try {
 			st=conn.prepareStatement("SELECT seller.*, department.Name as DepName "
-					+ "FROM seller INNER JOIN department ON "
-					+ "seller.DepartmentId = department.Id WHERE seller.Id = ?");
+					+ "FROM seller INNER JOIN department "
+					+ "ON seller.DepartmentId = department.Id WHERE seller.Id = ?");
 			
 			st.setInt(1, id);
 			rs = st.executeQuery();
